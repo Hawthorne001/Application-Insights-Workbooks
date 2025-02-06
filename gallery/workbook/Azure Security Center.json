@@ -53,12 +53,24 @@
 					"author": "Microsoft",
 					"name": "DevOps Security",
 					"description": "Gain visibility and insights into your DevOps security posture"
-				}, 
+				},
 				{
 					"id": "Workbooks/Azure Security Center/API Security",
 					"author": "Microsoft",
 					"name": "API Security",
 					"description": "Gain visibility and insights into your API security posture and threat detections"
+				},
+				{
+					"id": "Workbooks/Azure Security Center/CIEM",
+					"author": "Microsoft",
+					"name": "Permissions Management (CIEM)",
+					"description": "Gain single pain view for Permissions Management capability in Microsoft Defender for Cloud"
+				},
+				{
+					"id": "Workbooks/Azure Security Center/SQL Servers on Machines AMA Helper",
+					"author": "Microsoft",
+					"name": "SQL Servers on Machines AMA Helper",
+					"description": "Track your Defender for SQL AMA autoprovisioning status"
 				}
 			]
 		},
@@ -101,7 +113,7 @@
 					"author": "Microsoft",
 					"name": "Containers Security",
 					"description": "Provides a security mapping for Microsoft Defender for Containers plan based on the resource telemetry"
-				}, 
+				},
 				{
 					"id": "Workbooks/Azure Security Center/Defender CSPM",
 					"author": "Microsoft",

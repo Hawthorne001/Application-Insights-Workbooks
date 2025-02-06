@@ -222,7 +222,7 @@
             "name": "assignedDCR",
             "type": 5,
             "isRequired": true,
-            "query": "{\"version\":\"ARMEndpoint/1.0\",\"data\":null,\"headers\":[],\"method\":\"GET\",\"path\":\"{OneWVDHost}/providers/Microsoft.Insights/dataCollectionRuleAssociations?api-version=2021-04-01\",\"urlParams\":[],\"batchDisabled\":false,\"transformers\":[{\"type\":\"jsonpath\",\"settings\":{\"tablePath\":\"$.value\",\"columns\":[{\"path\":\"$.properties.dataCollectionRuleId\",\"columnid\":\"Id\",\"columnType\":\"string\"},{\"path\":\"$.properties.dataCollectionRuleId\",\"columnid\":\"Name\",\"columnType\":\"string\"},{\"path\":\"$.properties.dataCollectionRuleId\",\"columnid\":\"Selected\",\"substringRegexMatch\":\".*[rR][uU][lL][eE][sS]/(microsoft-avdi-).*|.*\",\"substringReplace\":\"$1\"}]}}]}",
+            "query": "{\"version\":\"ARMEndpoint/1.0\",\"data\":null,\"headers\":[],\"method\":\"GET\",\"path\":\"{OneWVDHost}/providers/Microsoft.Insights/dataCollectionRuleAssociations?api-version=2021-04-01\",\"urlParams\":[],\"batchDisabled\":false,\"transformers\":[{\"type\":\"jsonpath\",\"settings\":{\"tablePath\":\"$.value\",\"columns\":[{\"path\":\"$.properties.dataCollectionRuleId\",\"columnid\":\"Id\",\"columnType\":\"string\"},{\"path\":\"$.properties.dataCollectionRuleId\",\"columnid\":\"Name\",\"columnType\":\"string\"},{\"path\":\"$.properties.dataCollectionRuleId\",\"columnid\":\"Selected\",\"substringRegexMatch\":\".*[rR][uU][lL][eE][sS]/([mM][iI][cC][rR][oO][sS][oO][fF][tT]-[aA][vV][dD][iI]-).*|.*\",\"substringReplace\":\"$1\"}]}}]}",
             "isHiddenWhenLocked": true,
             "typeSettings": {
               "additionalResourceOptions": [],
@@ -1478,7 +1478,7 @@
                                         {
                                           "type": 1,
                                           "content": {
-                                            "json": "Select the **Workspace destinaton** and the **DCR resource group** to crate a DCR.",
+                                            "json": "Select the **Workspace destination** and the **DCR resource group** to create a DCR.",
                                             "style": "info"
                                           },
                                           "conditionalVisibility": {
@@ -1776,7 +1776,7 @@
                               "name": "NoExtensionVms",
                               "type": 1,
                               "isRequired": true,
-                              "query": "resources\r\n| where id in~ ({WVDHosts})\r\n| project id=tolower(id), name, location\r\n| join kind=leftouter (\r\nresources\r\n| where (type =~ \"Microsoft.Compute/virtualMachines/extensions\" or type =~\"microsoft.hybridcompute/machines\") and properties.type == \"AzureMonitorWindowsAgent\"\r\n| project vmname = tolower(extract(\"(.*?)/extension\", 1, id)),extname=name\r\n) on $left.id == $right.vmname\r\n| where isempty(vmname)\r\n| order by id\r\n| project id, name, extensionName=iif(isempty(extname), \"AzureMonitorWindowsAgent\", extname),location\r\n| project strcat('{\"id\":\"',id,\r\n    '\",\"name\":\"', name,\r\n    '\",\"extensionName\":\"', extensionName,\r\n    '\",\"location\":\"',location, '\"}')\r\n    , dist=name,selected=1",
+                              "query": "resources\r\n| where id in~ ({WVDHosts})\r\n| project id=tolower(id), name, location\r\n| join kind=leftouter (\r\nresources\r\n| where (type =~ \"Microsoft.Compute/virtualMachines/extensions\" or type =~\"microsoft.hybridcompute/machines/extensions\") and properties.type == \"AzureMonitorWindowsAgent\"\r\n| project vmname = tolower(extract(\"(.*?)/extension\", 1, id)),extname=name\r\n) on $left.id == $right.vmname\r\n| where isempty(vmname)\r\n| order by id\r\n| project id, name, extensionName=iif(isempty(extname), \"AzureMonitorWindowsAgent\", extname),location\r\n| project strcat('{\"id\":\"',id,\r\n    '\",\"name\":\"', name,\r\n    '\",\"extensionName\":\"', extensionName,\r\n    '\",\"location\":\"',location, '\"}')\r\n    , dist=name,selected=1",
                               "crossComponentResources": [
                                 "value::all"
                               ],
