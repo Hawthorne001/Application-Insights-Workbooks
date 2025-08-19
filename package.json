@@ -28,6 +28,6 @@
   },
   "dependencies": {
     "jsonschema": "^1.4.0",
-    "mocha-trx-reporter": "^3.2.4"
+    "mocha-trx-reporter": "^3.3.1"
   }
 }
